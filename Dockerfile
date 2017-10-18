@@ -1,6 +1,6 @@
 FROM ubuntu:17.04
 
-MAINTAINER Chris Daish <chrisdaish@gmail.com>
+MAINTAINER Marcos Di Pietro <chrisdaish@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 

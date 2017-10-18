@@ -26,6 +26,12 @@ v1.0
   -e ARGS=--proxy-pac-url='<Insert URL HERE>' -e URL=http://www.docker.com
 ```
 
+## Build Docker Image
+
+```
+docker build -t chrome-browser .
+```
+
 ## Launch Command
 
 ```
@@ -39,7 +45,13 @@ docker run  -v $HOME/Downloads:/home/google-chrome/Downloads:rw \
             -e DISPLAY=unix$DISPLAY \
             --rm \
             --name google-chrome \
-            chrisdaish/google-chrome
+            chrome-browser
+```
+
+Alternatively, run with the bundled run.sh script:
+
+```
+./run.sh
 ```
 
 ## FAQ
@@ -55,3 +67,7 @@ Simply allow the docker user to communicate with your X session
 ```
 xhost +local:docker
 ```
+
+## Disclaimer
+
+Based on work made by Chris Daish (https://github.com/chrisdaish/docker-chrome)
