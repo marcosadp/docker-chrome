@@ -10,4 +10,4 @@ if [ -d /home/google-chrome/.config ]; then
   chown -R google-chrome:google-chrome /home/google-chrome/.config
 fi
 
-su -ls "/bin/bash" -c "/usr/bin/google-chrome-stable '$ARGS' '$URL'" google-chrome
+su -ls "/bin/bash" -c "/usr/bin/google-chrome-stable --no-first-run '$ARGS' '$URL'" google-chrome

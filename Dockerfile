@@ -1,4 +1,4 @@
-FROM ubuntu:14.04.3
+FROM ubuntu:17.04
 
 MAINTAINER Chris Daish <chrisdaish@gmail.com>
 
@@ -6,10 +6,12 @@ ENV DEBIAN_FRONTEND noninteractive
 
 COPY AptSources /etc/apt/sources.list.d/
 
-RUN useradd -m google-chrome; \
-    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A040830F7FAC5991 \
-    && apt-get update \
-    && apt-get install -y --no-install-recommends ca-certificates \
+RUN useradd -m google-chrome
+RUN apt-get update
+RUN apt-get install -y wget
+RUN wget --no-check-certificate -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+RUN apt-get update
+RUN apt-get install -y --no-install-recommends ca-certificates \
                                                   gconf-service \
                                                   hicolor-icon-theme \
                                                   libappindicator1 \
@@ -26,8 +28,8 @@ RUN useradd -m google-chrome; \
                                                   libxss1 \
                                                   libxtst6 \
                                                   xdg-utils \
-                                                  google-chrome-stable=50.0.2661.94-1 \
-    && rm -rf /var/lib/apt/lists/*
+                                                  google-chrome-stable
+RUN rm -rf /var/lib/apt/lists/*
 
 COPY start-google-chrome.sh /usr/local/bin/
 
